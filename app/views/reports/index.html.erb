@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>All Reports</h1>
+  <table class="table">
+    <tr>
+      <td>
+        Name
+      </td>
+      <td>
+        Home
+      </td>
+      <td>
+        Message
+      </td>
+    </tr>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.child.name %></td>
+        <td><%= report.child.home %></td>
+        <td><%= report.message %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

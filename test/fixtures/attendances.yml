@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child_id: 
+  date: 2016-07-24
+  present: false
+  health: MyString
+
+two:
+  child_id: 
+  date: 2016-07-24
+  present: false
+  health: MyString

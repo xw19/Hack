@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center"><%= @home.name %></h1>
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+      <p class="text-center h3"><%= @home.address %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12"><h2>Child presently here(<%= @home.children.count %>):</h2></div>
+  </div>
+  <% @home.children.each do |child| %>
+    <div class="row">
+      <div class="col-md-12"><p><%= link_to child.name, child_path(child) %><p></div>
+    </div>
+  <% end %>
+  <% if admin_signed_in? %>
+    <%= link_to "Do attendance", new_home_attendance_path(@home), class: 'btn btn-danger' %>
+  <% end %>
+</div>

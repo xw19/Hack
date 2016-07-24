@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attendances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Child</th>
+      <th>Date</th>
+      <th>Present</th>
+      <th>Health</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.child %></td>
+        <td><%= attendance.date %></td>
+        <td><%= attendance.present %></td>
+        <td><%= attendance.health %></td>
+        <td><%= link_to 'Show', attendance %></td>
+        <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
+        <td><%= link_to 'Destroy', attendance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attendance', new_attendance_path %>

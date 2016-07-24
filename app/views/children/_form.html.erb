@@ -1,0 +1,49 @@
+<%= form_for(@child) do |f| %>
+  <% if @child.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
+
+      <ul>
+      <% @child.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uid %><br>
+    <%= f.number_field :uid, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :home_id %><br>
+    <%= f.select :home_id , Home.all.map { |home| [home.name, home.id]}, {}, { class: 'form-control' } %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :place %><br>
+    <%= f.text_field :place, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.select :gender, ["Male", "Female", "Other"], {}, {class: 'form-control'} %>
+  </div>
+  <div class="field">
+    <%= f.label :since %><br>
+    <%= f.date_select :since, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit  class: 'btn btn-success'%>
+  </div>
+<% end %>

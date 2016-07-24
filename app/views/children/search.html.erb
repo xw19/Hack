@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Search Results(<%= @results.count %>)</h1>
+  <table class="table">
+    <tr>
+      <td>
+        Results
+      </td>
+    </t>
+    <% @results.each do |result| %>
+      <tr>
+        <td>
+          <% if result.instance_of?(Child) %>
+            <%= link_to "#{result.name} A Child", child_path(result) %>
+          <% else %>
+            <%= link_to "#{result.name} A Home", home_path(result) %>
+          <% end %>
+        </td>
+      </t>
+    <% end %>
+  </table>
+</div>

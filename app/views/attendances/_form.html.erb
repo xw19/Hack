@@ -1,0 +1,37 @@
+<%= form_for @attendance, url: home_attendances_path(@home) do |f| %>
+  <% if @attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+
+      <ul>
+      <% @attendance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :child_id %><br>
+    <%= f.select :child_id, @home.children.map { |child| [child.uid, child.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :health %><br>
+    <%= f.text_field :health %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

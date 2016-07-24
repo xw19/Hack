@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 text-center"><img src="http://placehold.it/150x150" width="150" height="150"></div>
+    <div class="col-md-6 text-center"><h1><%= @child.name %></h1></div>
+  </div>
+  <hr>
+  <div class="row text-center">
+    <div class="col-md-4"><b>Place:</b><%= @child.place %></div>
+    <div class="col-md-4"><b>Age:</b><%= @child.age %></div>
+    <div class="col-md-4"><b>Gender: </b><%= @child.gender %></div>
+  </div>
+  <br>
+  <br>
+  <div class="row text-center">
+    <h4>Last 30 days attendance</h4>
+    <table class="table table-bordered">
+      <% @child.attendances.order('created_at').limit(30).each do |attendance| %>
+        <tr>
+          <td>
+            <%= attendance.date.to_date %>
+          </td>
+          <td>
+            <%= attendance.present ? "Present" : "Absent" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <h4>Report Discrepancy</h4>
+  <%= form_for Report.new, url: child_reports_path(@child) do |f| %>
+    <%= f.label :report %>
+    <%= f.text_area :message, class: 'form-control' %>
+    <br>
+    <%= f.submit "Create", class: 'btn btn-success' %>
+  <% end %>
+</div>

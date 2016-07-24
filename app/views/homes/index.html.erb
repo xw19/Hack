@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center">All Child Homes</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th><th colspan="2">Address</th>
+      <% if admin_signed_in? %>
+        <th colspan="2"></th>
+      <% end %>
+    </tr>
+    <%- @homes.order('name').each do |home| %>
+      <tr>
+        <td>
+          <%= home.name %>
+        </td>
+        <td>
+          <%= home.address %>
+        </td>
+        <td>
+          <%= link_to "View", home_path(home), class: 'btn btn-success' %>
+        </td>
+        <% if admin_signed_in? %>
+          <td><%= link_to 'Edit', edit_home_path(home) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
